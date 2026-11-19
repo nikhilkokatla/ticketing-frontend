@@ -1,0 +1,98 @@
+
+<div class="tickets-container">
+
+  <h2>All Tickets</h2>
+
+  <!-- Loading -->
+  @if (isLoading) {
+  <p>Loading tickets...</p>
+  }
+
+  <!-- Error message -->
+  @if (errorMessage) {
+  <p class="error-message">{{ errorMessage }}</p>
+  }
+
+  <!-- Success message -->
+  @if (successMessage) {
+  <p class="success-message">{{ successMessage }}</p>
+  }
+
+  <!-- Tickets table -->
+  @if (!isLoading && tickets.length > 0) {
+
+  <div class="table-container">
+
+    <table>
+
+      <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Ticket ID</th>
+        <th>Subject</th>
+        <th>Description</th>
+        <th>Priority</th>
+        <th>Status</th>
+        <th>Customer</th>
+      </tr>
+      </thead>
+
+      <tbody>
+
+      @for (ticket of tickets; track ticket.id; let i = $index) {
+
+      <tr>
+
+        <!-- Serial Number -->
+        <td>{{ i + 1 }}</td>
+
+        <td>{{ ticket.id }}</td>
+
+        <td>{{ ticket.subject }}</td>
+
+        <td>{{ ticket.description }}</td>
+
+        <!-- Priority dropdown -->
+        <td>
+          <select
+            [(ngModel)]="ticket.priority"
+            (change)="updatePriority(ticket)"
+          >
+            <option value="LOW">Low</option>
+            <option value="MEDIUM">Medium</option>
+            <option value="HIGH">High</option>
+          </select>
+        </td>
+
+        <!-- Status dropdown -->
+        <td>
+          <select
+            [(ngModel)]="ticket.status"
+            (change)="updateStatus(ticket)"
+          >
+            <option value="TO_DO">To Do</option>
+            <option value="IN_PROGRESS">In Progress</option>
+            <option value="DONE">Done</option>
+          </select>
+        </td>
+
+        <td>{{ ticket.userName }}</td>
+
+      </tr>
+
+      }
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+  }
+
+  <!-- Empty tickets -->
+  @if (!isLoading && tickets.length === 0 && !errorMessage) {
+  <p>No tickets available.</p>
+  }
+
+</div>

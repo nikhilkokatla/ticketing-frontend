@@ -1,0 +1,64 @@
+
+<div class="dashboard-header">
+  <h2>Dashboard</h2>
+  <p>Welcome to Sum Positive Ticketing Tool.</p>
+</div>
+
+@if (isLoading) {
+<p>Loading dashboard...</p>
+}
+
+@if (errorMessage) {
+<p class="error-message">{{ errorMessage }}</p>
+}
+
+@if (dashboardData) {
+
+<h3>Ticket Statistics</h3>
+
+<div class="dashboard-cards">
+
+  <div class="card total-card">
+    <h3>Total Tickets</h3>
+    <p>{{ dashboardData.totalTickets }}</p>
+  </div>
+
+  <div class="card todo-card">
+    <h3>To Do</h3>
+    <p>{{ dashboardData.todoTickets }}</p>
+  </div>
+
+  <div class="card progress-card">
+    <h3>In Progress</h3>
+    <p>{{ dashboardData.inProgressTickets }}</p>
+  </div>
+
+  <div class="card completed-card">
+    <h3>Completed</h3>
+    <p>{{ dashboardData.completedTickets }}</p>
+  </div>
+
+</div>
+
+<h3>Priority Statistics</h3>
+
+<div class="dashboard-cards priority-cards">
+
+  <div class="card high-card">
+    <h3>High Priority</h3>
+    <p>{{ dashboardData.highPriorityTickets }}</p>
+  </div>
+
+  <div class="card medium-card">
+    <h3>Medium Priority</h3>
+    <p>{{ dashboardData.mediumPriorityTickets }}</p>
+  </div>
+
+  <div class="card low-card">
+    <h3>Low Priority</h3>
+    <p>{{ dashboardData.lowPriorityTickets }}</p>
+  </div>
+
+</div>
+
+}

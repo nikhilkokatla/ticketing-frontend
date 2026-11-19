@@ -1,0 +1,125 @@
+
+<div class="tickets-container">
+
+  <h2>My Tickets</h2>
+
+  @if (isLoading) {
+  <p>Loading tickets...</p>
+  }
+
+  @if (successMessage) {
+  <p class="success-message">{{ successMessage }}</p>
+  }
+
+  @if (errorMessage) {
+  <p class="error-message">{{ errorMessage }}</p>
+  }
+
+  <!-- Edit Ticket Form -->
+  @if (selectedTicket) {
+  <div class="edit-form">
+
+    <h3>Edit Ticket #{{ selectedTicket.id }}</h3>
+
+    <form (ngSubmit)="updateTicket()">
+
+      <label>Subject</label>
+      <input
+        type="text"
+        [(ngModel)]="selectedTicket.subject"
+        name="subject"
+        required
+      />
+
+      <label>Description</label>
+      <textarea
+        [(ngModel)]="selectedTicket.description"
+        name="description"
+        required
+      ></textarea>
+
+      <label>Priority</label>
+      <select
+        [(ngModel)]="selectedTicket.priority"
+        name="priority"
+        required>
+        <option value="LOW">Low</option>
+        <option value="MEDIUM">Medium</option>
+        <option value="HIGH">High</option>
+      </select>
+
+      <button type="submit">Update Ticket</button>
+
+      <button
+        type="button"
+        (click)="selectedTicket = null">
+        Cancel
+      </button>
+
+    </form>
+
+  </div>
+  }
+
+  @if (!isLoading && tickets.length === 0 && !errorMessage) {
+  <p>No tickets found.</p>
+  }
+
+  @if (!isLoading && tickets.length > 0) {
+
+  <div class="table-container">
+
+    <table>
+
+      <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Ticket ID</th>
+        <th>Subject</th>
+        <th>Description</th>
+        <th>Priority</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+
+      <tbody>
+
+      @for (ticket of tickets; track ticket.id; let i = $index) {
+
+      <tr>
+        <td>{{ i + 1 }}</td>
+        <td>#{{ ticket.id }}</td>
+        <td>{{ ticket.subject }}</td>
+        <td>{{ ticket.description }}</td>
+        <td>{{ ticket.priority }}</td>
+        <td>{{ ticket.status }}</td>
+
+        <td>
+          <button
+            type="button"
+            class="edit-button"
+            (click)="editTicket(ticket)">
+            Edit
+          </button>
+
+          <button
+            type="button"
+            class="delete-button"
+            (click)="deleteTicket(ticket)">
+            Delete
+          </button>
+        </td>
+      </tr>
+
+      }
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+  }
+
+</div>

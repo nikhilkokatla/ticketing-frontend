@@ -1,0 +1,115 @@
+
+/* Main container */
+.ticket-container {
+  max-width: 650px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Heading */
+.ticket-container h2 {
+  color: #1e293b;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* Form layout */
+.ticket-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+.ticket-container label {
+  color: #334155;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  margin-top: 15px;
+}
+
+/* Input, textarea and select */
+.ticket-container input,
+.ticket-container textarea,
+.ticket-container select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #334155;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+/* Focus effect */
+.ticket-container input:focus,
+.ticket-container textarea:focus,
+.ticket-container select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+/* Description field */
+.ticket-container textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Dropdown */
+.ticket-container select {
+  cursor: pointer;
+}
+
+/* Submit button */
+.ticket-container button {
+  margin-top: 25px;
+  padding: 12px 18px;
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Button hover */
+.ticket-container button:hover:not(:disabled) {
+  background-color: #1d4ed8;
+}
+
+/* Disabled button */
+.ticket-container button:disabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+}
+
+/* Success message */
+.ticket-container p {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.ticket-container p:first-of-type {
+  color: #15803d;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .ticket-container {
+    margin: 20px 15px;
+    padding: 20px;
+  }
+
+  .ticket-container h2 {
+    font-size: 21px;
+  }
+}
